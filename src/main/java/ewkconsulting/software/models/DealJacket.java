@@ -35,6 +35,17 @@ public class DealJacket {
     @JsonIgnore
     private Car car;
 
+    public void setCar(Car car) {
+        if (car == null) {
+            if (this.car != null) {
+//                this.car.ad(this);
+            } else {
+                this.car = car;
+            }
+        }
+        this.car = car;
+    }
+
     
 
 }
