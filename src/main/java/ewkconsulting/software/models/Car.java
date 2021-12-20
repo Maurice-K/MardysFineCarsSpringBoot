@@ -12,6 +12,9 @@ import java.util.Set;
 public class Car {
 
     @Id
+    @GeneratedValue
+    private Long carId;
+    
     @Column(name = "sku")
     private String sku;
 
@@ -33,20 +36,21 @@ public class Car {
     @Column(name = "cylinders")
     private Long cylinders;
 
-    // mappedBy is the relation in control of the relationship
-    /**
-     * cascade = CascadeType.All will make sure you can operate on child objects from the parent object.
-     * Ex: You can find details about deal jackets form a Car object.
-      */
-    @OneToMany(mappedBy = "cars", cascade = CascadeType.ALL, orphanRemoval = true)
-    private Set<DealJacket> dealJackets = new HashSet<DealJacket>();
+    @OneToMany(mappedBy = "car", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<DealJacket> dealJackets = new HashSet<>();
 
-    private void addDealJacket(DealJacket dealJacket) {
+    public void addDealJacket(DealJacket dealJacket) {
         dealJackets.add(dealJacket);
+        dealJacket.setCar(this);
     }
 
-    private void removeDealJacket(DealJacket dealJacket) {
+    public void removeDealJacket(DealJacket dealJacket) {
         dealJackets.remove(dealJacket);
+        dealJacket.setCar(null);
     }
+
+	public void setDealJacket(DealJacket dealJacket) {
+		
+	}
 
 }

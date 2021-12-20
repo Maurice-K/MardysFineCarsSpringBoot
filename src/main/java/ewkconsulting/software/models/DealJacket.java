@@ -1,9 +1,9 @@
 package ewkconsulting.software.models;
 
 import lombok.Data;
-import net.minidev.json.annotate.JsonIgnore;
-
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Data
@@ -11,6 +11,9 @@ import javax.persistence.*;
 public class DealJacket {
 
     @Id
+    @GeneratedValue
+    private Long dealJacketId;
+    
     @Column(name = "sku")
     private String sku;
 
@@ -29,23 +32,20 @@ public class DealJacket {
     @Column(name = "payment_schedule")
     private String paymentSchedule;
 
-    // `fetch = FetchType.EAGER` makes sure all the Deal Jackets get loaded when a Car is queried.
-    // `JsonIgnore` will ignore the car that has already been serialized; therefore, stopping loops.
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnore
     private Car car;
 
-    public void setCar(Car car) {
-        if (car == null) {
-            if (this.car != null) {
-//                this.car.ad(this);
-            } else {
-                this.car = car;
-            }
-        }
-        this.car = car;
-    }
-
+    @Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Car )) return false;
+		return dealJacketId != null && dealJacketId.equals(((Car) o).getCarId());
+	}
     
-
+    @Override
+	public int hashCode() {
+		return 31;
+	}
 }
