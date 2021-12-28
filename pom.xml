@@ -18,12 +18,25 @@
 		<java.version>1.8</java.version>
 	</properties>
 	<dependencies>
-	<dependency>
-  		<groupId>com.google.guava</groupId>
-  		<artifactId>guava</artifactId>
-  		<version>18.0</version>
-	</dependency>
-
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-csv</artifactId>
+			<version>1.8</version>
+		</dependency>
+		<dependency>
+  			<groupId>com.google.guava</groupId>
+  			<artifactId>guava</artifactId>
+  			<version>18.0</version>
+		</dependency>
+		<dependency>
+    		<groupId>org.springframework.boot</groupId>
+    		<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+    		<groupId>io.springfox</groupId>
+    		<artifactId>springfox-boot-starter</artifactId>
+   			<version>3.0.0</version>
+		</dependency>
 		<dependency>
 			<!-- JSON Web Token Support -->
 			<groupId>io.jsonwebtoken</groupId>
@@ -46,16 +59,6 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-    		<groupId>io.springfox</groupId>
-    		<artifactId>springfox-swagger2</artifactId>
-    		<version>3.0.0</version>
-		</dependency>
-		<dependency>
-    		<groupId>io.springfox</groupId>
-    		<artifactId>springfox-swagger-ui</artifactId>
-    		<version>3.0.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

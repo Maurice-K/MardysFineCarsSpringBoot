@@ -66,16 +66,8 @@ public class User implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		if (this.role.equals("ROLE_" + ApplicationUserRole.ADMIN.name())) {
 			return ApplicationUserRole.ADMIN.getGrantedAuthorities();
-		}else if (this.role.equals("ROLE_" + ApplicationUserRole.DRIVER.name())) {
-			return ApplicationUserRole.DRIVER.getGrantedAuthorities();
-		}else if (this.role.equals("ROLE_" + ApplicationUserRole.EMPLOYEE.name())) {
-			return ApplicationUserRole.EMPLOYEE.getGrantedAuthorities();
-		}else if (this.role.equals("ROLE_" + ApplicationUserRole.OWNER.name())) {
-			return ApplicationUserRole.OWNER.getGrantedAuthorities();
 		}else if (this.role.equals("ROLE_" + ApplicationUserRole.CUSTOMER.name())) {
 			return ApplicationUserRole.CUSTOMER.getGrantedAuthorities();
-		}else if (this.role.equals("ROLE_" + ApplicationUserRole.LAST_MIN_HAIR.name())) {
-			return ApplicationUserRole.LAST_MIN_HAIR.getGrantedAuthorities();
 		}else {
 			return null;
 		}

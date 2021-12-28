@@ -23,11 +23,11 @@ public class DealJacket {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "amount_of_income")
-    private Long amountOfIncome;
+    @Column(name = "_income")
+    private float income;
 
-    @Column(name = "type_of_income")
-    private String typeOfIncome;
+    @Enumerated(EnumType.STRING)
+    private IncomeType incomeType;
 
     @Column(name = "payment_schedule")
     private String paymentSchedule;

@@ -69,22 +69,23 @@ class SecurityConfig extends WebSecurityConfigurerAdapter {
 			/**
 			 * Authentication for payment api
 			 */
-			.antMatchers(HttpMethod.DELETE, "/api/**").hasAuthority(ApplicationUserPermission.INVENTORY_WRITE.getPermission())
-			.antMatchers(HttpMethod.POST, "/api/**").hasAuthority(ApplicationUserPermission.INVENTORY_WRITE.getPermission())
-			.antMatchers(HttpMethod.PUT, "/api/**").hasAuthority(ApplicationUserPermission.INVENTORY_WRITE.getPermission())
-			.antMatchers(HttpMethod.GET, "/api/**").hasAuthority(ApplicationUserPermission.INVENTORY_READ.getPermission())
+			.antMatchers(HttpMethod.DELETE, "/api/**").hasAuthority(ApplicationUserPermission.CAR_WRITE.getPermission())
+			.antMatchers(HttpMethod.POST, "/api/**").hasAuthority(ApplicationUserPermission.CAR_WRITE.getPermission())
+			.antMatchers(HttpMethod.PUT, "/api/**").hasAuthority(ApplicationUserPermission.CAR_WRITE.getPermission())
+			.antMatchers(HttpMethod.GET, "/api/**").hasAuthority(ApplicationUserPermission.CAR_READ.getPermission())
 			.antMatchers(
 					"/swagger-resources/**",
 					"/v2/api-docs",
                     "/configuration/ui",
                     "/configuration/security",
                     "/swagger-ui.html",
+                    "/swagger-ui/**",
                     "/webjars/**",
                     "/auth-api/signin",
                     "/auth-api/register",
                     "/auth-api/forgot-password/**",
                     "/auth-api/tmp-signin",
-                    "/mappings",
+                    "/actuator/**",
                     "/storage/**"
 					)
 			.permitAll()
