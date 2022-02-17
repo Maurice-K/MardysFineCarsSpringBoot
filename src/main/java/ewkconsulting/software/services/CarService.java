@@ -15,15 +15,16 @@ import ewkconsulting.software.repositories.CarRepository;
 /**
  * 
  * @author Damond Howard
- * @apiNote This is a Service class that encapsulate the operations for cars which include creating deleting and retrieving
+ * @apiNote This is a Service class that encapsulate the operations for cars
+ *          which include creating deleting and retrieving
  *
  */
 @Service
 public class CarService {
-	
+
 	@Autowired
 	private CarRepository carRepository;
-	
+
 	public Car createCar(CarDto car) {
 		Car myCar = new Car();
 		myCar.setSku(car.getSku());
@@ -33,11 +34,10 @@ public class CarService {
 		myCar.setColor(car.getColor());
 		myCar.setPrice(car.getPrice());
 		myCar.setCylinders(car.getCyclinders());
-	
-		
+
 		return carRepository.save(myCar);
 	}
-	
+
 	public Car addDealJacket(Long carId, DealJacket dealJacket) throws CarNotFoundException {
 		Car myCar = carRepository.findById(carId)
 				.orElseThrow(() -> new CarNotFoundException(carId));
@@ -45,26 +45,26 @@ public class CarService {
 		return carRepository.save(myCar);
 	}
 
-	public Car addDealJackets(Long carId, Set<DealJacket> dealJackets) throws CarNotFoundException{
+	public Car addDealJackets(Long carId, Set<DealJacket> dealJackets) throws CarNotFoundException {
 		Car myCar = carRepository.findById(carId)
 				.orElseThrow(() -> new CarNotFoundException(carId));
 		myCar.setDealJackets(dealJackets);
 		return carRepository.save(myCar);
 	}
-	
+
 	public void save(Car car) {
 		carRepository.save(car);
 	}
-	
+
 	public Car findById(Long id) throws CarNotFoundException {
 		return carRepository.findById(id)
 				.orElseThrow(() -> new CarNotFoundException(id));
 	}
-	
+
 	public Car findBySku(String sku) {
-			return carRepository.findBySku(sku);
+		return carRepository.findBySku(sku);
 	}
-	
+
 	public void deleteCar(Long carId) {
 		carRepository.deleteById(carId);
 	}
@@ -72,10 +72,18 @@ public class CarService {
 	public List<Car> findAll() {
 		return carRepository.findAll();
 	}
-	
+
 	public void saveAll(List<Car> cars) {
 		carRepository.saveAll(cars);
-		
+
 	}
-	
+
+	public List<Car> getCars() {
+		return carRepository.findAll();
+	}
+
+	public Car getCarById(Long id) throws CarNotFoundException {
+		return carRepository.findById(id).orElseThrow(() -> new CarNotFoundException(id));
+	}
+
 }
