@@ -15,7 +15,7 @@ spring:
       hibernate:
         format_sql: true
   datasource:
-    platform:
+    platform: org.hibernate.dialect.PostgreSQLDialect
     url:
     username:
     password:
